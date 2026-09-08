@@ -2,7 +2,6 @@ schema_version: 1
 
 context:
   version: "0.4.0"
-  python_min: "3.10"
 
 package:
   name: abvx-set
@@ -42,8 +41,11 @@ tests:
       run:
         - python ${{ python_min }}.*
     script:
-      - set-validate-registry --help
       - set-plan-config-apply --help
+      - python -c "from pathlib import Path; Path('.set.json').write_text('{\"version\":1,\"repo\":\"conda-forge/smoke-test\",\"tools\":{\"agentsgen\":{\"init\":true,\"pack\":true,\"check\":true}},\"presets\":[\"repo-docs\"]}')"
+      - set-plan-config-apply --config .set.json --repo-root . --format json --export-dir .set-plan
+      - test -f .set-plan/workflow.set.yml
+      - test -f .set-plan/pr-body.md
 
 about:
   summary: SET workflow action helpers and registry tooling
