@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "0.4.0"
+  version: "0.5.0"
 
 package:
   name: abvx-set
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/a/abvx-set/abvx_set-${{ version }}.tar.gz
-  sha256: dc816e1e7819a3ccfc6adf8ad1b0d882cefd229e3841576cea458d6caf4af58b
+  sha256: 946b5b20212c173af849de22c5ea51932cf1b126920c6b509578c4d54b2d9256
 
 build:
   number: 0
